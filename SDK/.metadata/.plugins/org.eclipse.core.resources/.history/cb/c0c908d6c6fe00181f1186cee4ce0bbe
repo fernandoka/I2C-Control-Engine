@@ -1,0 +1,309 @@
+/*
+ *
+ * Xilinx, Inc.
+ * XILINX IS PROVIDING THIS DESIGN, CODE, OR INFORMATION "AS IS" AS A 
+ * COURTESY TO YOU.  BY PROVIDING THIS DESIGN, CODE, OR INFORMATION AS
+ * ONE POSSIBLE   IMPLEMENTATION OF THIS FEATURE, APPLICATION OR 
+ * STANDARD, XILINX IS MAKING NO REPRESENTATION THAT THIS IMPLEMENTATION 
+ * IS FREE FROM ANY CLAIMS OF INFRINGEMENT, AND YOU ARE RESPONSIBLE 
+ * FOR OBTAINING ANY RIGHTS YOU MAY REQUIRE FOR YOUR IMPLEMENTATION
+ * XILINX EXPRESSLY DISCLAIMS ANY WARRANTY WHATSOEVER WITH RESPECT TO 
+ * THE ADEQUACY OF THE IMPLEMENTATION, INCLUDING BUT NOT LIMITED TO 
+ * ANY WARRANTIES OR REPRESENTATIONS THAT THIS IMPLEMENTATION IS FREE 
+ * FROM CLAIMS OF INFRINGEMENT, IMPLIED WARRANTIES OF MERCHANTABILITY 
+ * AND FITNESS FOR A PARTICULAR PURPOSE.
+ */
+
+/*
+ * 
+ *
+ * This file is a generated sample test application.
+ *
+ * This application is intended to test and/or illustrate some 
+ * functionality of your system.  The contents of this file may
+ * vary depending on the IP in your system and may use existing
+ * IP driver functions.  These drivers will be generated in your
+ * SDK application project when you run the "Generate Libraries" menu item.
+ *
+ */
+
+
+#include <stdio.h>
+#include "xparameters.h"
+#include "xil_cache.h"
+#include "xbasic_types.h"
+#include "xbram.h"
+#include "bram_header.h"
+#include "xbasic_types.h"
+#include "xgpio.h"
+#include "gpio_header.h"
+#include <xstatus.h>
+#include "speaker.h"
+#include "keypad.h"
+#include "motor_hw.h"
+#include "C:\hlocal\Pr5\drivers\i2c_v1_00_a\src\i2c.h"
+
+
+
+//Altavoz
+#define SILENCIO 	0x00000000
+#define DO 			0x00000BAA
+#define RE 			0x00000A64
+#define MI 			0x00000942
+#define FA 			0x000008BD
+#define SOL 		0x000007C9
+#define LA 			0x000006F0
+#define SI 			0x0000062E
+#define speakerBaseAddress 0xC8C00000
+#define OCTAVACENTRAL 	3
+#define OCTAVASUPERIOR 	4
+#define OCTAVAINFERIOR 	2
+
+//Keypad
+#define keypadBaseAddres 0xC9600000
+
+//Engine
+#define engineBaseAddres 0xC0A00000
+#define DataEngine 0x9FFF0000 //stop=0(1) dir=1(0) halfStep=0(2) numpasos=256(4 to 15) speed=0(16)
+
+//I2C
+#define I2CBaseAddres 0xC3000000
+#define LECTURA_I2C_CMD 	0x00000000 //Comando lectura
+#define ESCRITURA_I2C_CMD 	0x00000001 //Comando escritura
+#define DIR_CONVERSOR 		0x00000092 //Conversor analogico digital
+#define DIR_LDR				0x00
+#define DIR_LM35			0x01
+#define DIR_POT2			0x02
+#define DIR_POT1			0x03
+
+#define TRUE 1
+#define FALSE 0
+/*********************************************SPEAKER**************************************************/
+void my_delay(int delay){
+	int i, j;
+	for (i=0; i<delay; i=i+1)
+		for (j=0; j<500; j=j+1){}
+}
+
+void ALTAVOZ_suena(Xuint32 nota, Xuint32 octava){
+	SPEAKER_mWriteSlaveReg0 (speakerBaseAddress, 0, nota << octava);
+}
+
+void ALTAVOZ_calla(){
+	SPEAKER_mWriteSlaveReg0 (speakerBaseAddress, 0, SILENCIO);
+}
+
+void suenaNota(Xuint32 nota,Xuint32 octava){
+    ALTAVOZ_suena(nota, octava);
+    my_delay(600); xil_printf("NOTA \n\r");
+
+    ALTAVOZ_calla();
+    my_delay(300); xil_printf("Silencio\n");
+}
+
+void suenaNota2(Xuint32 nota,Xuint32 octava){
+	  ALTAVOZ_suena(nota, octava);
+	  my_delay(1200); xil_printf("Nota más duradera \n");
+	  ALTAVOZ_calla();
+	  my_delay(300); xil_printf("Silencio\n");
+}
+
+
+void song(){
+	xil_printf("Little, little, little star... \n");
+
+	suenaNota(DO,OCTAVACENTRAL);
+	suenaNota(DO,OCTAVACENTRAL);
+
+	suenaNota(SOL,OCTAVACENTRAL);
+	suenaNota(SOL,OCTAVACENTRAL);
+
+	suenaNota(LA,OCTAVACENTRAL);
+	suenaNota(LA,OCTAVACENTRAL);
+
+	suenaNota2(SOL,OCTAVACENTRAL);
+
+	suenaNota(FA,OCTAVACENTRAL);
+	suenaNota(FA,OCTAVACENTRAL);
+
+	suenaNota(MI,OCTAVACENTRAL);
+	suenaNota(MI,OCTAVACENTRAL);
+
+	suenaNota(RE,OCTAVACENTRAL);
+    suenaNota(RE,OCTAVACENTRAL);
+
+    suenaNota2(DO,OCTAVACENTRAL);
+
+}
+
+/*********************************************KEYPAD**************************************************/
+ void makeSound(unsigned char readedValue){
+	 switch(readedValue){
+	 	 case 0x1:
+	 		suenaNota(DO,OCTAVACENTRAL);
+	 		break;
+	 	 case 0x2:
+	 		suenaNota(RE,OCTAVACENTRAL);
+	 		break;
+	 	 case 0x3:
+	 		suenaNota(MI,OCTAVACENTRAL);
+	 		break;
+	 	 case 0x4:
+	 		suenaNota(FA,OCTAVACENTRAL);
+	 		break;
+	 	 case 0x5:
+	 		suenaNota(SOL,OCTAVACENTRAL);
+	 		break;
+	 	 case 0x6:
+	 		suenaNota(LA,OCTAVACENTRAL);
+	 		break;
+	 	 case 0x7:
+			suenaNota(SI,OCTAVACENTRAL);
+		    break;
+	 	 case 0x8:
+	 		suenaNota(DO,OCTAVACENTRAL);
+	 		break;
+	 	 case 0x9:
+	 		suenaNota(RE,OCTAVACENTRAL);
+	 		break;
+	 	 case 0xA:
+	 		suenaNota(MI,OCTAVACENTRAL);
+	 		break;
+	 	 case 0xB:
+	 		suenaNota(FA,OCTAVACENTRAL);
+	 		break;
+	 	 case 0xC:
+	 		suenaNota(SOL,OCTAVACENTRAL);
+	 		break;
+	 	 case 0xD:
+	 		suenaNota(LA,OCTAVACENTRAL);
+	 		break;
+	 	 case 0xE:
+			suenaNota(SI,OCTAVACENTRAL);
+		    break;
+	 	case 0xF:
+	 		 suenaNota(DO,OCTAVASUPERIOR);
+	 		 break;
+		case 0x0:
+			suenaNota(SI,OCTAVAINFERIOR);
+			break;
+	 }
+	xil_printf("PulseOtra tecla\n\r");
+ }
+
+void keypad(){
+	Xuint32 key,sentinel=0xFFFFFFFF;
+	unsigned char readValue;
+
+	xil_printf("---Test para el keypad---\n\r");
+
+	do{
+		key=KEYPAD_mReadReg(keypadBaseAddres, 0);
+
+		if (key != sentinel){
+		 readValue=key>>28;
+		 xil_printf("Se ha leido %x del registro 0 del teclado \n\r", readValue);
+		 makeSound(readValue);
+
+		}
+
+		KEYPAD_mWriteSlaveReg0(keypadBaseAddres, 0, sentinel);
+
+	}while (1);
+
+
+
+}
+
+/***********************************************Engine******************************************************************/
+void engine(){
+	Xuint32 Data2,Data1=DataEngine;
+	Xuint8 option=0x00;
+
+	xil_printf("Select speed: (s/h) \n");
+
+    option = XUartLite_RecvByte(XPAR_UARTLITE_0_BASEADDR);
+	XUartLite_RecvByte(XPAR_UARTLITE_0_BASEADDR); //Para recibir el /0
+
+	if(option=='h')
+		Data1|=0x00008000;
+
+	MOTOR_HW_mWriteReg(engineBaseAddres, 0, Data1);
+
+	do{
+		Data1 = MOTOR_HW_mReadReg(engineBaseAddres, 0);
+		Data2 = MOTOR_HW_mReadReg(engineBaseAddres, MOTOR_HW_SLV_REG1_OFFSET);
+		xil_printf("Current step %x \n",Data2);
+
+	}while (!( Data1 & 0x40000000 ));
+}
+
+/***********************************************I2C****************************************************************/
+
+Xuint32 I2C_read(Xuint32 dir){
+
+	while(I2C_mWriteFIFOFull(I2CBaseAddres) == TRUE);
+	I2C_mWriteToFIFO( I2CBaseAddres, 0,(Xuint32)((dir<<1)+LECTURA_I2C_CMD) );
+
+	my_delay(20);
+
+	while(I2C_mReadFIFOEmpty(I2CBaseAddres) == TRUE);
+	return I2C_mReadFromFIFO(I2CBaseAddres, 0);
+}
+
+
+void I2C(){
+	int i;
+
+	for(i=0; i < 100000;i++ ){
+		xil_printf("LDR readed data: %d \n",I2C_read(DIR_CONVERSOR));
+	}
+
+}
+
+
+
+int main() 
+{
+
+   Xuint8 option=0x00;
+
+   I2C_mReset(I2CBaseAddres);
+   I2C_mResetWriteFIFO(I2CBaseAddres);
+   I2C_mResetReadFIFO(I2CBaseAddres);
+
+
+   Xil_ICacheEnable();
+   Xil_DCacheEnable();
+
+  while(1){
+	  xil_printf("----Menu----\n");
+
+	  xil_printf("Select mode, testing devices:  \n");
+	  xil_printf("R(keypad (*) )/S(Start song (*) )/M(Start Engine)/A(I2C Test) /Other(exit): ");
+
+	  option = XUartLite_RecvByte(XPAR_UARTLITE_0_BASEADDR);
+	  XUartLite_RecvByte(XPAR_UARTLITE_0_BASEADDR); //Para recibir el /0
+
+	  if(option!= 'S' && option!= 'R' && option!= 'M' && option!= 'A')break;
+
+	  if(option=='S')
+		  song();
+	  else if (option=='R')
+		  keypad();
+	  else if(option=='M')
+		  engine();
+	  else
+		  I2C();
+
+
+  }
+
+  xil_printf("----Bye!!----\n");
+
+   Xil_DCacheDisable();
+   Xil_ICacheDisable();
+
+   return 0;
+}
+

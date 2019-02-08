@@ -1,0 +1,11 @@
+V3 6
+FL C:/hlocal/I2C/EDK/pcores/i2c_v1_00_a/hdl/vhdl/i2c_master.vhd 2014/07/02.16:41:15 P.15xf
+FL C:/hlocal/Pr5/pcores/i2c_v1_00_a/hdl/vhdl/i2c_master.vhd 2017/09/14.16:27:36 P.15xf
+EN work/i2c_master 1544631582 \
+      FL C:/hlocal/Pr5/pcores/i2c_v1_00_a/hdl/vhdl/i2c_master.vhd \
+      PB ieee/std_logic_1164 1335251622 PB ieee/STD_LOGIC_UNSIGNED 1335251625
+AR work/i2c_master/logic 1544631583 \
+      FL C:/hlocal/Pr5/pcores/i2c_v1_00_a/hdl/vhdl/i2c_master.vhd \
+      EN work/i2c_master 1544631582
+FL C:/hlocal/SE/I2C_memoria/EDK/pcores/i2c_v1_00_a/hdl/vhdl/i2c_master.vhd 2017/09/01.15:19:01 P.15xf
+FL C:/hlocal/SE/I2C_nbytes/EDK/pcores/i2c_v1_00_a/hdl/vhdl/i2c_master.vhd 2017/09/01.15:19:01 P.15xf

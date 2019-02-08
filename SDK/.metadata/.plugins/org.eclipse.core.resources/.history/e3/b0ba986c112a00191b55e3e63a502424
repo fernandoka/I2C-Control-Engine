@@ -1,0 +1,629 @@
+/*
+ *
+ * Xilinx, Inc.
+ * XILINX IS PROVIDING THIS DESIGN, CODE, OR INFORMATION "AS IS" AS A 
+ * COURTESY TO YOU.  BY PROVIDING THIS DESIGN, CODE, OR INFORMATION AS
+ * ONE POSSIBLE   IMPLEMENTATION OF THIS FEATURE, APPLICATION OR 
+ * STANDARD, XILINX IS MAKING NO REPRESENTATION THAT THIS IMPLEMENTATION 
+ * IS FREE FROM ANY CLAIMS OF INFRINGEMENT, AND YOU ARE RESPONSIBLE 
+ * FOR OBTAINING ANY RIGHTS YOU MAY REQUIRE FOR YOUR IMPLEMENTATION
+ * XILINX EXPRESSLY DISCLAIMS ANY WARRANTY WHATSOEVER WITH RESPECT TO 
+ * THE ADEQUACY OF THE IMPLEMENTATION, INCLUDING BUT NOT LIMITED TO 
+ * ANY WARRANTIES OR REPRESENTATIONS THAT THIS IMPLEMENTATION IS FREE 
+ * FROM CLAIMS OF INFRINGEMENT, IMPLIED WARRANTIES OF MERCHANTABILITY 
+ * AND FITNESS FOR A PARTICULAR PURPOSE.
+ */
+
+/*
+ * 
+ *
+ * This file is a generated sample test application.
+ *
+ * This application is intended to test and/or illustrate some 
+ * functionality of your system.  The contents of this file may
+ * vary depending on the IP in your system and may use existing
+ * IP driver functions.  These drivers will be generated in your
+ * SDK application project when you run the "Generate Libraries" menu item.
+ *
+ */
+
+
+#include <stdio.h>
+#include "xparameters.h"
+#include "xil_cache.h"
+#include "xbasic_types.h"
+#include "xbram.h"
+#include "bram_header.h"
+#include "xbasic_types.h"
+#include "gpio_header.h"
+#include <xstatus.h>
+#include "speaker.h"
+#include "keypad.h"
+#include "motor_hw.h"
+#include "lcd_manager.h"
+#include "i2c.h"
+
+
+
+//Altavoz
+#define SILENCIO 	0x00000000
+#define DO 			0x00000BAA
+#define REb 		0x00000B01
+#define RE 			0x00000A64
+#define MIb 		0x000009CE
+#define MI 			0x00000942
+#define FA 			0x000008BD
+#define SOL 		0x000007C9
+#define LA 			0x000006F0
+#define SI 			0x0000062E
+#define speakerBaseAddress 0xC8C00000
+#define OCTAVACENTRAL 	3
+#define OCTAVASUPERIOR 	4
+#define OCTAVAINFERIOR 	2
+
+//Keypad
+#define keypadBaseAddres 0xC9600000
+
+//Engine
+#define engineBaseAddres 0xC0A00000
+#define DataEngine 0x9E000000 //stop=0(1) dir=1(0) halfStep=0(2) numpasos=7(4 to 15) speed=0(16)
+#define DataEngine2 0x94000000 //stop=0(1) dir=1(0) halfStep=0(2) numpasos=2(4 to 15) speed=0(16)
+#define StopEngine 0x40000000 //stop=0(1) dir=1(0) halfStep=0(2) numpasos=2(4 to 15) speed=0(16)
+#define changeDirection	0x80000000
+#define secondSpeed 0x00008000
+
+//I2C
+#define I2CBaseAddres 0xC3000000
+
+#define LECTURA_I2C_CMD 	0x00000000 //Comando lectura 1 read
+#define ESCRITURA_I2C_CMD 	0x00000001 //Comando escritura 0 write
+
+#define DIR_EXPANSOR 		0x00000072 // Switches expansor
+#define DIR_CONVERSOR 		0x00000092 //Conversor analogico digital
+#define DIR_LDR				0x00
+#define DIR_LM35			0x01
+#define DIR_POT2			0x02
+#define DIR_POT1			0x03
+
+
+//LCD
+# define LCDBaseAdrres 0xCB000000
+# define CLEAR_DISPLAY_CMD 0x00000001
+# define RETURN_HOME_CMD 0x00000002
+# define WRITE_CMD 0x00000200
+# define FIRST_ROW 0x00000080
+# define SECOND_ROW 0x000000C0
+# define WRITE_POINTER_BLINK 0x0000000f
+# define WRITE_POINTER_NOT_BLINK 0x0000000C
+# define pointerToRight 0x00000018
+
+//Others
+# define PASSWORD_LENGHT 4
+# define PASSWORD_CODE 0x31323841    //128A
+/*********************************************SPEAKER**************************************************/
+void my_delay(int delay){
+	int i, j;
+	for (i=0; i<delay; i=i+1)
+		for (j=0; j<500; j=j+1){}
+}
+
+void ALTAVOZ_suena(Xuint32 nota, Xuint32 octava){
+	SPEAKER_mWriteSlaveReg0 (speakerBaseAddress, 0, nota << octava);
+}
+
+void ALTAVOZ_calla(){
+	SPEAKER_mWriteSlaveReg0 (speakerBaseAddress, 0, SILENCIO);
+}
+
+void suenaNota(Xuint32 nota,Xuint32 octava){
+    ALTAVOZ_suena(nota, octava);
+    my_delay(600); xil_printf("Negra \n\r");
+
+    ALTAVOZ_calla();
+    my_delay(300); xil_printf("Silencio\n");
+}
+
+void suenaNota2(Xuint32 nota,Xuint32 octava){
+	  ALTAVOZ_suena(nota, octava);
+	  my_delay(1200); xil_printf("Blanca \n");
+	  ALTAVOZ_calla();
+	  my_delay(300); xil_printf("Silencio\n");
+}
+
+/*
+void suenaNota3(Xuint32 nota,Xuint32 octava){
+	  ALTAVOZ_suena(nota, octava);
+	  my_delay(150); xil_printf("semicorchea \n");
+	  ALTAVOZ_calla();
+	  my_delay(100); xil_printf("Silencio\n");
+}
+*/
+void suenaNota4(Xuint32 nota,Xuint32 octava){
+	  ALTAVOZ_suena(nota, octava);
+	  my_delay(300); xil_printf("corchea \n");
+	  ALTAVOZ_calla();
+	  my_delay(100); xil_printf("Silencio\n");
+}
+
+
+
+void song2(){
+	xil_printf("Sad song... \n");
+
+	suenaNota(LA,OCTAVASUPERIOR);
+	suenaNota(MI,OCTAVACENTRAL);
+	suenaNota(LA,OCTAVACENTRAL);
+
+	suenaNota(MI,OCTAVACENTRAL);
+
+	suenaNota(SOL,OCTAVACENTRAL);
+	suenaNota(MI,OCTAVACENTRAL);
+	suenaNota(FA,OCTAVACENTRAL);
+
+	suenaNota(MI,OCTAVACENTRAL);
+	suenaNota(LA,OCTAVASUPERIOR);
+
+	suenaNota(MI,OCTAVACENTRAL);
+	suenaNota(LA,OCTAVACENTRAL);
+	suenaNota(MI,OCTAVACENTRAL);
+
+	suenaNota(SOL,OCTAVACENTRAL);
+	suenaNota(MI,OCTAVACENTRAL);
+	suenaNota(FA,OCTAVACENTRAL);
+	suenaNota(MI,OCTAVACENTRAL);
+
+
+    suenaNota2(LA,OCTAVASUPERIOR);
+}
+
+void song(){
+	xil_printf("Little, little, little star... \n");
+
+	suenaNota(DO,OCTAVACENTRAL);
+	suenaNota(DO,OCTAVACENTRAL);
+
+	suenaNota(SOL,OCTAVACENTRAL);
+	suenaNota(SOL,OCTAVACENTRAL);
+
+	suenaNota(LA,OCTAVACENTRAL);
+	suenaNota(LA,OCTAVACENTRAL);
+
+	suenaNota2(SOL,OCTAVACENTRAL);
+
+	suenaNota(FA,OCTAVACENTRAL);
+	suenaNota(FA,OCTAVACENTRAL);
+
+	suenaNota(MI,OCTAVACENTRAL);
+	suenaNota(MI,OCTAVACENTRAL);
+
+	suenaNota(RE,OCTAVACENTRAL);
+    suenaNota(RE,OCTAVACENTRAL);
+
+    suenaNota2(DO,OCTAVACENTRAL);
+
+}
+
+/*********************************************KEYPAD**************************************************/
+ void makeSound(unsigned char readedValue){
+	 switch(readedValue){
+	 	 case 0x31:
+	 		suenaNota4(DO,OCTAVACENTRAL);
+	 		break;
+	 	 case 0x32:
+	 		suenaNota4(RE,OCTAVACENTRAL);
+	 		break;
+	 	 case 0x33:
+	 		suenaNota4(MI,OCTAVACENTRAL);
+	 		break;
+	 	 case 0x34:
+	 		suenaNota4(FA,OCTAVACENTRAL);
+	 		break;
+	 	 case 0x35:
+	 		suenaNota4(SOL,OCTAVACENTRAL);
+	 		break;
+	 	 case 0x36:
+	 		suenaNota4(LA,OCTAVACENTRAL);
+	 		break;
+	 	 case 0x37:
+	 		suenaNota4(SI,OCTAVACENTRAL);
+		    break;
+	 	 case 0x38:
+	 		suenaNota4(DO,OCTAVACENTRAL);
+	 		break;
+	 	 case 0x39:
+	 		suenaNota4(RE,OCTAVACENTRAL);
+	 		break;
+	 	 case 0x41:
+	 		suenaNota4(MI,OCTAVACENTRAL);
+	 		break;
+	 	 case 0x42:
+	 		suenaNota4(FA,OCTAVACENTRAL);
+	 		break;
+	 	 case 0x43:
+	 		suenaNota4(SOL,OCTAVACENTRAL);
+	 		break;
+	 	 case 0x44:
+	 		suenaNota4(LA,OCTAVACENTRAL);
+	 		break;
+	 	 case 0x45:
+	 		suenaNota4(SI,OCTAVACENTRAL);
+		    break;
+	 	case 0x46:
+	 		suenaNota4(DO,OCTAVASUPERIOR);
+	 		 break;
+		case 0x30:
+			suenaNota4(SI,OCTAVASUPERIOR);
+			break;
+	 }
+	xil_printf("PulseOtra tecla\n\r");
+ }
+
+/***********************************************I2C****************************************************************/
+void I2C_escritura(Xuint32 dato[], Xuint32 direccion, Xuint32 num_datos){
+	int i;
+	// ESCRITURA I2C
+	while (I2C_mWriteFIFOFull(I2CBaseAddres) == TRUE){}
+	I2C_mWriteToFIFO(I2CBaseAddres, 0, (Xuint32) ((num_datos << 16) + (direccion <<0) + ESCRITURA_I2C_CMD));
+
+	for (i=0; i< (num_datos/4 + ((num_datos%4)!=0)); i=i+1)
+	{   while (I2C_mWriteFIFOFull(I2CBaseAddres) == TRUE){}
+		I2C_mWriteToFIFO(I2CBaseAddres, 0, (Xuint32) dato[i]);
+	}
+	my_delay(20);
+}
+
+void I2C_lectura(Xuint32 direccion,  Xuint32 num_datos, Xuint32 dato[]){
+	int i;
+	//LECTURA I2C
+
+	while (I2C_mWriteFIFOFull(I2CBaseAddres) == TRUE){}
+	I2C_mWriteToFIFO(I2CBaseAddres, 0, (Xuint32) ((num_datos << 16) + (direccion << 0) + LECTURA_I2C_CMD));
+	for (i=0; i< (num_datos/4 + ((num_datos%4)!=0)); i++)
+	{
+	while (I2C_mReadFIFOEmpty(I2CBaseAddres) == TRUE){}
+	dato[i]= I2C_mReadFromFIFO(I2CBaseAddres, 0);
+	}
+}
+
+/*--------------------------------------------LCD--------------------------------------------------------*/
+
+
+void LCD_enviarCMD ( Xuint32 cmd ){
+	// Comprobamos que la FIFO no esté llena
+	while ( LCD_MANAGER_mWriteFIFOFull( LCDBaseAdrres) );
+	// Escribimos el comando en la FIFO
+	LCD_MANAGER_mWriteToFIFO( LCDBaseAdrres , 0, cmd );
+}
+
+
+/***********************************************************************************************************/
+
+Xuint8 countDigits(Xuint8 n){
+	int c=1;
+
+	while( (n/=10) != 0 ){
+		c++;
+	}
+
+	return c;
+}
+
+
+void parseTemp(Xuint8 temp,Xuint8 dat[],Xuint8* size){
+	Xuint8 num[3]; //Como mucho 3 digitos por la representacion
+	int i,length=countDigits(temp);
+
+	for(i=0; i < length ;i++){
+		num[i]=temp%10;
+		temp/=10;
+		xil_printf("Valor de num[i] : %x \n",num[i]);
+
+	}
+
+	*size=length;
+
+	xil_printf("Valor de size : %x \n",*size);
+
+	for(i=0;i < length ;i++){
+		 switch(num[i]){
+		 	 case 0x1:
+		 		dat[i]='1';
+		 		break;
+		 	 case 0x2:
+		 		dat[i]='2';
+		 		break;
+		 	 case 0x3:
+		 		dat[i]='3';
+		 		break;
+		 	 case 0x4:
+		 		dat[i]='4';
+		 		break;
+		 	 case 0x5:
+		 		dat[i]='5';
+		 		break;
+		 	 case 0x6:
+		 		dat[i]='6';
+		 		break;
+		 	 case 0x7:
+		 		dat[i]='7';
+			    break;
+		 	 case 0x8:
+		 		dat[i]='8';
+		 		break;
+		 	 case 0x9:
+		 		dat[i]='9';
+		 		break;
+			case 0x0:
+				dat[i]='0';
+				break;
+		 }
+	}//For
+
+}
+
+
+void printTempLCD(){
+
+	LCD_enviarCMD( RETURN_HOME_CMD );
+	LCD_enviarCMD ( SECOND_ROW );
+
+	LCD_enviarCMD (WRITE_CMD +'T');
+	LCD_enviarCMD (WRITE_CMD +'e');
+	LCD_enviarCMD (WRITE_CMD +'m');
+	LCD_enviarCMD (WRITE_CMD +'p');
+	LCD_enviarCMD (WRITE_CMD +' ');
+
+}
+
+void updateTemp(Xuint8 temp){
+	Xuint8 dat[2],length;
+	int i;
+
+	parseTemp(temp,(Xuint8 *)&dat,&length);
+
+	printTempLCD();
+
+	for(i=length-1; 0 > i;i--)
+		LCD_enviarCMD (WRITE_CMD +dat[i]);
+
+	LCD_enviarCMD (WRITE_CMD +' ');
+	LCD_enviarCMD (WRITE_CMD +'º');
+	LCD_enviarCMD (WRITE_CMD +'C');
+
+}
+
+
+void setSteps(Xuint8 res1, Xuint8 res2){
+	Xuint32 dat= res1 >= 0x00 && res1<=0x68 ? DataEngine | secondSpeed : DataEngine2;
+
+	if(res2 >= 0x00 && res2<=0x68)
+	dat|= changeDirection;
+
+	MOTOR_HW_mWriteReg(engineBaseAddres, 0,dat);
+	xil_printf("Motor funcionando : \n");
+
+}
+
+
+void runEngine(){
+	Xuint32 res1,res2,res3;
+	Xuint8 datos[5], datos2[5],cont=5;
+
+	datos[0]=0x44 + DIR_LDR;
+	I2C_escritura((Xuint32 *)(&datos), DIR_CONVERSOR, 1);
+	I2C_lectura(DIR_CONVERSOR,1,(Xuint32 *)(&datos2)); //lectura sin sentido
+
+	while(1){
+
+		I2C_lectura(DIR_CONVERSOR,4,(Xuint32 *)(&datos2));
+		res1=datos2[0];
+		xil_printf("LDR readed data, : %x \n",res1);
+
+		if(res1 < 0xE8){
+
+			//Lectura Temp
+			I2C_lectura(DIR_CONVERSOR,4,(Xuint32 *)(&datos2));
+			res2=datos2[0];
+			xil_printf("Temp readed data, : %x \n",res2);
+
+			if(cont==5){
+				updateTemp((Xuint8)res2);
+				cont=0;
+			}
+			else
+				cont++;
+			//Lectura Pot2
+			I2C_lectura(DIR_CONVERSOR,4,(Xuint32 *)(&datos2));
+			res3=datos2[0];
+			xil_printf("Pot2 readed data, : %x \n",res3);
+
+			//LecturaPot1
+			I2C_lectura(DIR_CONVERSOR,4,(Xuint32 *)(&datos2));
+			res1=datos2[0];
+			xil_printf("Pot1 readed data, : %x \n\n",res1);
+
+			setSteps(res1,res3);
+
+		}else{
+	    	xil_printf("LDR readed data: %x executing break \n\n",res1);
+			break;
+		}
+
+		my_delay(1000);
+
+	}
+	MOTOR_HW_mWriteReg(engineBaseAddres, 0,StopEngine);
+}
+
+
+ Xuint32 read_keypad(){
+	Xuint32 code,key,sentinel=0xFFFFFFFF,mask=0x000000FF;
+	unsigned char readValue;
+	int i=0;
+
+	code=0x00000000;
+	KEYPAD_mWriteSlaveReg0(keypadBaseAddres, 0, sentinel);
+
+	do{
+		key=KEYPAD_mReadReg(keypadBaseAddres, 0);
+
+		if(key != sentinel){
+		 readValue= (key>>24) & (mask);
+		 xil_printf("Se ha leido %c\n", readValue);
+		 makeSound(readValue);
+		 i++;
+		 LCD_enviarCMD ( WRITE_CMD + readValue ); //Escribo en LCD
+		 code= code<<8 | readValue;
+
+		}
+
+		KEYPAD_mWriteSlaveReg0(keypadBaseAddres, 0, sentinel);
+
+	}while (i < PASSWORD_LENGHT);
+
+	return code;
+
+}
+
+
+Xuint32 requestCode(){
+
+	 LCD_enviarCMD( CLEAR_DISPLAY_CMD );
+	 LCD_enviarCMD( RETURN_HOME_CMD );
+
+
+	 LCD_enviarCMD ( WRITE_CMD + ' ');
+	 LCD_enviarCMD ( WRITE_CMD + 'E' );
+	 LCD_enviarCMD ( WRITE_CMD + 'n' );
+	 LCD_enviarCMD ( WRITE_CMD + 't' );
+	 LCD_enviarCMD ( WRITE_CMD + 'e' );
+	 LCD_enviarCMD ( WRITE_CMD + 'r' );
+	 LCD_enviarCMD ( WRITE_CMD + ' ' );
+	 LCD_enviarCMD ( WRITE_CMD + 'i' );
+	 LCD_enviarCMD ( WRITE_CMD + 'g' );
+	 LCD_enviarCMD ( WRITE_CMD + 'n' );
+	 LCD_enviarCMD ( WRITE_CMD + 'i' );
+	 LCD_enviarCMD ( WRITE_CMD + 't' );
+	 LCD_enviarCMD ( WRITE_CMD + 'i' );
+	 LCD_enviarCMD ( WRITE_CMD + 'o' );
+	 LCD_enviarCMD ( WRITE_CMD + 'n' );
+
+	 LCD_enviarCMD ( SECOND_ROW ); // cambio fila
+
+	 LCD_enviarCMD ( WRITE_CMD + 'c' );
+	 LCD_enviarCMD ( WRITE_CMD + 'o' );
+	 LCD_enviarCMD ( WRITE_CMD + 'd' );
+	 LCD_enviarCMD ( WRITE_CMD + 'e' );
+	 LCD_enviarCMD ( WRITE_CMD + ':' );
+	 LCD_enviarCMD ( WRITE_CMD + ' ' );
+
+	 LCD_enviarCMD ( WRITE_POINTER_BLINK );
+
+	 return read_keypad();
+}
+
+void wrongCode(){
+	LCD_enviarCMD( CLEAR_DISPLAY_CMD );
+	LCD_enviarCMD( RETURN_HOME_CMD );
+
+
+	LCD_enviarCMD ( WRITE_CMD + ' ');
+	LCD_enviarCMD ( WRITE_CMD + 'W' );
+	LCD_enviarCMD ( WRITE_CMD + 'r' );
+	LCD_enviarCMD ( WRITE_CMD + 'o' );
+	LCD_enviarCMD ( WRITE_CMD + 'n' );
+	LCD_enviarCMD ( WRITE_CMD + 'g' );
+	LCD_enviarCMD ( WRITE_CMD + ' ' );
+	LCD_enviarCMD ( WRITE_CMD + 'c' );
+	LCD_enviarCMD ( WRITE_CMD + 'o' );
+	LCD_enviarCMD ( WRITE_CMD + 'd' );
+	LCD_enviarCMD ( WRITE_CMD + 'e' );
+	LCD_enviarCMD ( WRITE_CMD + ' ' );
+	LCD_enviarCMD ( WRITE_CMD + ':' );
+	LCD_enviarCMD ( WRITE_CMD + '(' );
+	LCD_enviarCMD ( WRITE_POINTER_NOT_BLINK );
+
+	song2();
+	my_delay(2000);
+
+}
+
+void congratulations(){
+	LCD_enviarCMD( CLEAR_DISPLAY_CMD );
+	LCD_enviarCMD( RETURN_HOME_CMD );
+
+	LCD_enviarCMD ( WRITE_CMD + ' ');
+	LCD_enviarCMD ( WRITE_CMD + 'C' );
+	LCD_enviarCMD ( WRITE_CMD + 'o' );
+	LCD_enviarCMD ( WRITE_CMD + 'n' );
+	LCD_enviarCMD ( WRITE_CMD + 'g' );
+	LCD_enviarCMD ( WRITE_CMD + 'r' );
+	LCD_enviarCMD ( WRITE_CMD + 'a' );
+	LCD_enviarCMD ( WRITE_CMD + 't' );
+	LCD_enviarCMD ( WRITE_CMD + 's' );
+	LCD_enviarCMD ( WRITE_CMD + ' ' );
+	LCD_enviarCMD ( WRITE_CMD + ':' );
+	LCD_enviarCMD ( WRITE_CMD + ')' );
+	LCD_enviarCMD ( WRITE_POINTER_NOT_BLINK );
+
+	song();
+	my_delay(2000);
+
+	LCD_enviarCMD( CLEAR_DISPLAY_CMD );
+	LCD_enviarCMD( RETURN_HOME_CMD );
+
+
+	LCD_enviarCMD ( WRITE_CMD + ' ');
+	LCD_enviarCMD ( WRITE_CMD + 'E' );
+	LCD_enviarCMD ( WRITE_CMD + 'n' );
+	LCD_enviarCMD ( WRITE_CMD + 'g' );
+	LCD_enviarCMD ( WRITE_CMD + 'i' );
+	LCD_enviarCMD ( WRITE_CMD + 'n' );
+	LCD_enviarCMD ( WRITE_CMD + 'e' );
+	LCD_enviarCMD ( WRITE_CMD + ' ' );
+	LCD_enviarCMD ( WRITE_CMD + 'R' );
+	LCD_enviarCMD ( WRITE_CMD + 'u' );
+	LCD_enviarCMD ( WRITE_CMD + 'n' );
+	LCD_enviarCMD ( WRITE_CMD + 'n' );
+	LCD_enviarCMD ( WRITE_CMD + 'i' );
+	LCD_enviarCMD ( WRITE_CMD + 'n' );
+	LCD_enviarCMD ( WRITE_CMD + 'g' );
+
+
+}
+
+void setup(){
+	   I2C_mReset(I2CBaseAddres);
+	   I2C_mResetWriteFIFO(I2CBaseAddres);
+	   I2C_mResetReadFIFO(I2CBaseAddres);
+	   LCD_MANAGER_mResetWriteFIFO( LCDBaseAdrres );
+
+	   Xil_ICacheEnable();
+	   Xil_DCacheEnable();
+
+}
+
+int main() 
+{
+   setup();
+
+  while(1){
+
+	  if( requestCode() == PASSWORD_CODE ){
+			xil_printf("Right code!! :\n");
+			congratulations();
+			runEngine();
+		}
+		else{
+			wrongCode();
+		}
+  }
+
+  xil_printf("----Bye!!----\n");
+
+   Xil_DCacheDisable();
+   Xil_ICacheDisable();
+
+   return 0;
+}
+

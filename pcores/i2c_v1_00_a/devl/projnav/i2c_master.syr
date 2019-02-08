@@ -1,0 +1,518 @@
+Release 14.1 - xst P.15xf (nt)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.30 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.30 secs
+ 
+--> Reading design: i2c_master.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "i2c_master.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "i2c_master"
+Output Format                      : NGC
+Target Device                      : xc3s1000-4-ft256
+
+---- Source Options
+Top Module Name                    : i2c_master
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 8
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "C:/hlocal/I2C/EDK/pcores/i2c_v1_00_a/hdl/vhdl/i2c_master.vhd" in Library work.
+Entity <i2c_master> compiled.
+WARNING:HDLParsers:817 - "C:/hlocal/I2C/EDK/pcores/i2c_v1_00_a/hdl/vhdl/i2c_master.vhd" Line 81. Choice .TO. is not a locally static expression.
+WARNING:HDLParsers:817 - "C:/hlocal/I2C/EDK/pcores/i2c_v1_00_a/hdl/vhdl/i2c_master.vhd" Line 84. Choice .TO. is not a locally static expression.
+WARNING:HDLParsers:817 - "C:/hlocal/I2C/EDK/pcores/i2c_v1_00_a/hdl/vhdl/i2c_master.vhd" Line 87. Choice .TO. is not a locally static expression.
+Entity <i2c_master> (Architecture <logic>) compiled.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <i2c_master> in library <work> (architecture <logic>) with generics.
+	bus_clk = 400000
+	input_clk = 50000000
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing generic Entity <i2c_master> in library <work> (Architecture <logic>).
+	bus_clk = 400000
+	input_clk = 50000000
+INFO:Xst:1739 - HDL ADVISOR - "C:/hlocal/I2C/EDK/pcores/i2c_v1_00_a/hdl/vhdl/i2c_master.vhd" line 40: declaration of a buffer port will make it difficult for you to validate this design by simulation. It is preferable to declare it as output.
+Entity <i2c_master> analyzed. Unit <i2c_master> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <i2c_master>.
+    Related source file is "C:/hlocal/I2C/EDK/pcores/i2c_v1_00_a/hdl/vhdl/i2c_master.vhd".
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 9                                              |
+    | Transitions        | 18                                             |
+    | Inputs             | 4                                              |
+    | Outputs            | 10                                             |
+    | Clock              | data_clk                  (rising_edge)        |
+    | Reset              | reset                     (positive)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | ready                                          |
+    | Power Up State     | ready                                          |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 128x1-bit ROM for signal <data_clk$mux0001> created at line 80.
+    Found 1-bit register for signal <busy>.
+    Found 8-bit register for signal <data_rd>.
+    Found 1-bit register for signal <ack_error>.
+    Found 8-bit register for signal <addr_rw>.
+    Found 3-bit register for signal <bit_cnt>.
+    Found 3-bit subtractor for signal <bit_cnt$addsub0000>.
+    Found 7-bit register for signal <count>.
+    Found 7-bit adder for signal <count$addsub0000> created at line 78.
+    Found 1-bit register for signal <data_clk>.
+    Found 8-bit register for signal <data_rx>.
+    Found 8-bit register for signal <data_tx>.
+    Found 1-bit register for signal <Mtridata_scl_clk> created at line 82.
+    Found 1-bit register for signal <Mtrien_scl_clk> created at line 82.
+    Found 1-bit tristate buffer for signal <scl_clk>.
+    Found 1-bit register for signal <scl_ena>.
+    Found 1-bit register for signal <sda_int>.
+    Found 1-bit register for signal <stretch>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   1 ROM(s).
+	inferred  50 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred   1 Tristate(s).
+Unit <i2c_master> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 1
+ 128x1-bit ROM                                         : 1
+# Adders/Subtractors                                   : 2
+ 3-bit subtractor                                      : 1
+ 7-bit adder                                           : 1
+# Registers                                            : 21
+ 1-bit register                                        : 16
+ 3-bit register                                        : 1
+ 7-bit register                                        : 1
+ 8-bit register                                        : 3
+# Tristates                                            : 1
+ 1-bit tristate buffer                                 : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <state/FSM> on signal <state[1:9]> with one-hot encoding.
+-----------------------
+ State    | Encoding
+-----------------------
+ ready    | 000000001
+ start    | 000000010
+ command  | 000000100
+ slv_ack1 | 000001000
+ wr       | 000010000
+ rd       | 000100000
+ slv_ack2 | 001000000
+ mstr_ack | 010000000
+ stop     | 100000000
+-----------------------
+WARNING:Xst:1710 - FF/Latch <Mtridata_scl_clk> (without init value) has a constant value of 0 in block <i2c_master>. This FF/Latch will be trimmed during the optimization process.
+
+Synthesizing (advanced) Unit <i2c_master>.
+INFO:Xst:3034 - In order to maximize performance and save block RAM resources, the small ROM <Mrom_data_clk_mux0001> will be implemented on LUT. If you want to force its implementation on block, use option/constraint rom_style.
+Unit <i2c_master> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 1
+# ROMs                                                 : 1
+ 128x1-bit ROM                                         : 1
+# Adders/Subtractors                                   : 2
+ 3-bit subtractor                                      : 1
+ 7-bit adder                                           : 1
+# Registers                                            : 50
+ Flip-Flops                                            : 50
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1710 - FF/Latch <Mtridata_scl_clk> (without init value) has a constant value of 0 in block <i2c_master>. This FF/Latch will be trimmed during the optimization process.
+
+Optimizing unit <i2c_master> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block i2c_master, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 58
+ Flip-Flops                                            : 58
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : i2c_master.ngr
+Top Level Output File Name         : i2c_master
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 35
+
+Cell Usage :
+# BELS                             : 144
+#      GND                         : 1
+#      INV                         : 3
+#      LUT2                        : 6
+#      LUT2_D                      : 1
+#      LUT3                        : 15
+#      LUT3_D                      : 4
+#      LUT3_L                      : 2
+#      LUT4                        : 86
+#      LUT4_D                      : 4
+#      LUT4_L                      : 6
+#      MUXF5                       : 16
+# FlipFlops/Latches                : 58
+#      FDC                         : 16
+#      FDC_1                       : 1
+#      FDCE                        : 9
+#      FDE                         : 18
+#      FDE_1                       : 8
+#      FDP                         : 6
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 34
+#      IBUF                        : 20
+#      OBUF                        : 13
+#      OBUFT                       : 1
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s1000ft256-4 
+
+ Number of Slices:                       71  out of   7680     0%  
+ Number of Slice Flip Flops:             58  out of  15360     0%  
+ Number of 4 input LUTs:                127  out of  15360     0%  
+ Number of IOs:                          35
+ Number of bonded IOBs:                  35  out of    173    20%  
+ Number of GCLKs:                         2  out of      8    25%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 10    |
+data_clk1                          | BUFG                   | 48    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+reset                              | IBUF                   | 32    |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 9.803ns (Maximum Frequency: 102.007MHz)
+   Minimum input arrival time before clock: 8.951ns
+   Maximum output required time after clock: 9.243ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 6.282ns (frequency: 159.185MHz)
+  Total number of paths / destination ports: 125 / 10
+-------------------------------------------------------------------------
+Delay:               6.282ns (Levels of Logic = 3)
+  Source:            count_4 (FF)
+  Destination:       stretch (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: count_4 to stretch
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              7   0.720   1.405  count_4 (count_4)
+     LUT2_D:I0->O          3   0.551   0.975  Mtrien_scl_clk_mux000012 (Mtrien_scl_clk_mux000012)
+     LUT4_D:I2->LO         1   0.551   0.126  stretch_or00002 (N91)
+     LUT4:I3->O            1   0.551   0.801  stretch_or0000 (stretch_or0000)
+     FDCE:CE                   0.602          stretch
+    ----------------------------------------
+    Total                      6.282ns (2.975ns logic, 3.307ns route)
+                                       (47.4% logic, 52.6% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'data_clk1'
+  Clock period: 9.803ns (frequency: 102.007MHz)
+  Total number of paths / destination ports: 477 / 56
+-------------------------------------------------------------------------
+Delay:               4.902ns (Levels of Logic = 2)
+  Source:            bit_cnt_0 (FF)
+  Destination:       data_rx_2 (FF)
+  Source Clock:      data_clk1 rising
+  Destination Clock: data_clk1 falling
+
+  Data Path: bit_cnt_0 to data_rx_2
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDP:C->Q             30   0.720   1.868  bit_cnt_0 (bit_cnt_0)
+     LUT4:I3->O            1   0.551   0.000  data_rx_1_and00001_G (N68)
+     MUXF5:I1->O           1   0.360   0.801  data_rx_1_and00001 (data_rx_1_and0000)
+     FDE_1:CE                  0.602          data_rx_1
+    ----------------------------------------
+    Total                      4.902ns (2.233ns logic, 2.669ns route)
+                                       (45.6% logic, 54.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 3 / 3
+-------------------------------------------------------------------------
+Offset:              5.296ns (Levels of Logic = 2)
+  Source:            reset (PAD)
+  Destination:       Mtrien_scl_clk (FF)
+  Destination Clock: clk rising
+
+  Data Path: reset to Mtrien_scl_clk
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            41   0.821   1.905  reset_IBUF (reset_IBUF)
+     INV:I->O             18   0.551   1.417  reset_inv1_INV_0 (reset_inv)
+     FDE:CE                    0.602          data_clk
+    ----------------------------------------
+    Total                      5.296ns (1.974ns logic, 3.322ns route)
+                                       (37.3% logic, 62.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'data_clk1'
+  Total number of paths / destination ports: 110 / 57
+-------------------------------------------------------------------------
+Offset:              8.951ns (Levels of Logic = 6)
+  Source:            ena (PAD)
+  Destination:       sda_int (FF)
+  Destination Clock: data_clk1 rising
+
+  Data Path: ena to sda_int
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            13   0.821   1.509  ena_IBUF (ena_IBUF)
+     LUT2:I0->O            1   0.551   0.827  sda_int_mux000191 (sda_int_mux00019)
+     LUT4:I3->O            1   0.551   1.140  sda_int_mux000115 (sda_int_mux000115)
+     LUT3:I0->O            1   0.551   0.827  sda_int_mux000128 (sda_int_mux000128)
+     LUT4:I3->O            1   0.551   0.869  sda_int_mux000189 (sda_int_mux000189)
+     LUT4:I2->O            1   0.551   0.000  sda_int_mux0001517 (sda_int_mux0001)
+     FDP:D                     0.203          sda_int
+    ----------------------------------------
+    Total                      8.951ns (3.779ns logic, 5.172ns route)
+                                       (42.2% logic, 57.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'data_clk1'
+  Total number of paths / destination ports: 14 / 12
+-------------------------------------------------------------------------
+Offset:              9.243ns (Levels of Logic = 2)
+  Source:            state_FSM_FFd8 (FF)
+  Destination:       sda_T (PAD)
+  Source Clock:      data_clk1 rising
+
+  Data Path: state_FSM_FFd8 to sda_T
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q             15   0.720   1.527  state_FSM_FFd8 (state_FSM_FFd8)
+     LUT4:I0->O            1   0.551   0.801  sda_ena_n1 (sda_T_OBUF)
+     OBUF:I->O                 5.644          sda_T_OBUF (sda_T)
+    ----------------------------------------
+    Total                      9.243ns (6.915ns logic, 2.328ns route)
+                                       (74.8% logic, 25.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 2 / 2
+-------------------------------------------------------------------------
+Offset:              8.619ns (Levels of Logic = 2)
+  Source:            data_clk (FF)
+  Destination:       sda_T (PAD)
+  Source Clock:      clk rising
+
+  Data Path: data_clk to sda_T
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              2   0.720   0.903  data_clk (data_clk1)
+     LUT4:I3->O            1   0.551   0.801  sda_ena_n1 (sda_T_OBUF)
+     OBUF:I->O                 5.644          sda_T_OBUF (sda_T)
+    ----------------------------------------
+    Total                      8.619ns (6.915ns logic, 1.704ns route)
+                                       (80.2% logic, 19.8% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 14.00 secs
+Total CPU time to Xst completion: 14.02 secs
+ 
+--> 
+
+Total memory usage is 150456 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    5 (   0 filtered)
+Number of infos    :    3 (   0 filtered)
+

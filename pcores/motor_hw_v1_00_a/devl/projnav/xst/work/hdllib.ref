@@ -1,0 +1,4 @@
+EN motorstep NULL C:/hlocal/Pr5/pcores/motor_hw_v1_00_a/hdl/vhdl/motorstep.vhd sub00/vhpl00 1544457475
+AR one_hundred_k_counter behavioral C:/hlocal/Pr5/pcores/motor_hw_v1_00_a/hdl/vhdl/100_k_counter.vhd sub00/vhpl03 1544457478
+AR motorstep behavioral C:/hlocal/Pr5/pcores/motor_hw_v1_00_a/hdl/vhdl/motorstep.vhd sub00/vhpl01 1544457476
+EN one_hundred_k_counter NULL C:/hlocal/Pr5/pcores/motor_hw_v1_00_a/hdl/vhdl/100_k_counter.vhd sub00/vhpl02 1544457477

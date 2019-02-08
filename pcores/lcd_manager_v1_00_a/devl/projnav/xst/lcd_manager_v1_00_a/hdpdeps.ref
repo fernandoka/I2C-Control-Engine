@@ -1,0 +1,25 @@
+V3 14
+FL //vboxsrv/w7_fpga_uni/Pr5/pcores/lcd_manager_v1_00_a/hdl/vhdl/lcd_manager.vhd 2019/01/31.11:18:45 P.15xf
+EN lcd_manager_v1_00_a/lcd_manager 1548930044 \
+      FL //vboxsrv/w7_fpga_uni/Pr5/pcores/lcd_manager_v1_00_a/hdl/vhdl/lcd_manager.vhd \
+      PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
+      PB ieee/STD_LOGIC_UNSIGNED 1335251625 LB proc_common_v3_00_a \
+      PB proc_common_v3_00_a/proc_common_pkg 1548930000 \
+      PB proc_common_v3_00_a/ipif_pkg 1548930025 LB wrpfifo_v5_01_a \
+      EN wrpfifo_v5_01_a/wrpfifo_top 1548930038 LB plbv46_slave_single_v1_01_a \
+      EN plbv46_slave_single_v1_01_a/plbv46_slave_single 1548930040 \
+      LB lcd_manager_v1_00_a EN lcd_manager_v1_00_a/user_logic 1548930042
+AR lcd_manager_v1_00_a/lcd_manager/IMP 1548930045 \
+      FL //vboxsrv/w7_fpga_uni/Pr5/pcores/lcd_manager_v1_00_a/hdl/vhdl/lcd_manager.vhd \
+      EN lcd_manager_v1_00_a/lcd_manager 1548930044 \
+      CP plbv46_slave_single_v1_01_a/plbv46_slave_single \
+      CP wrpfifo_v5_01_a/wrpfifo_top CP lcd_manager_v1_00_a/user_logic
+FL //vboxsrv/w7_fpga_uni/Pr5/pcores/lcd_manager_v1_00_a/hdl/vhdl/user_logic.vhd 2019/01/31.11:14:58 P.15xf
+EN lcd_manager_v1_00_a/user_logic 1548930042 \
+      FL //vboxsrv/w7_fpga_uni/Pr5/pcores/lcd_manager_v1_00_a/hdl/vhdl/user_logic.vhd \
+      PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
+      PB ieee/STD_LOGIC_UNSIGNED 1335251625 LB proc_common_v3_00_a \
+      PB proc_common_v3_00_a/proc_common_pkg 1548930000
+AR lcd_manager_v1_00_a/user_logic/IMP 1548930043 \
+      FL //vboxsrv/w7_fpga_uni/Pr5/pcores/lcd_manager_v1_00_a/hdl/vhdl/user_logic.vhd \
+      EN lcd_manager_v1_00_a/user_logic 1548930042 CP lcd_controller

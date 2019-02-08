@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "C:/hlocal/Pr2/pcores/speaker_v1_00_a/devl/projnav/speaker.xst" -ofn "C:/hlocal/Pr2/pcores/speaker_v1_00_a/devl/projnav/speaker.syr" 

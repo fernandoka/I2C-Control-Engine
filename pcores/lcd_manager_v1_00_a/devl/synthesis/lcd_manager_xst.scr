@@ -1,0 +1,12 @@
+run
+-opt_level 2
+-opt_mode speed
+-ifmt mixed
+-ifn "\\vboxsrv\w7_fpga_uni\Pr5\pcores\lcd_manager_v1_00_a\devl\synthesis\lcd_manager_xst.prj"
+-top lcd_manager
+-p virtex6
+-ofn "\\vboxsrv\w7_fpga_uni\Pr5\pcores\lcd_manager_v1_00_a\devl\synthesis\lcd_manager_xst.ngc"
+-iobuf NO
+-rtlview YES
+-hierarchy_separator /
+-work_lib lcd_manager_v1_00_a

@@ -1,0 +1,4 @@
+AR user_logic imp C:/hlocal/Pr5/pcores/motor_hw_v1_00_a/hdl/vhdl/user_logic.vhd sub00/vhpl01 1544457484
+EN user_logic NULL C:/hlocal/Pr5/pcores/motor_hw_v1_00_a/hdl/vhdl/user_logic.vhd sub00/vhpl00 1544457483
+AR motor_hw imp C:/hlocal/Pr5/pcores/motor_hw_v1_00_a/hdl/vhdl/motor_hw.vhd sub00/vhpl03 1544457486
+EN motor_hw NULL C:/hlocal/Pr5/pcores/motor_hw_v1_00_a/hdl/vhdl/motor_hw.vhd sub00/vhpl02 1544457485

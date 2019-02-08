@@ -1,0 +1,4 @@
+AR user_logic imp C:/hlocal/Pr2/pcores/speaker_v1_00_a/hdl/vhdl/user_logic.vhd sub00/vhpl01 1542642819
+EN user_logic NULL C:/hlocal/Pr2/pcores/speaker_v1_00_a/hdl/vhdl/user_logic.vhd sub00/vhpl00 1542642818
+EN speaker NULL C:/hlocal/Pr2/pcores/speaker_v1_00_a/hdl/vhdl/speaker.vhd sub00/vhpl02 1542642820
+AR speaker imp C:/hlocal/Pr2/pcores/speaker_v1_00_a/hdl/vhdl/speaker.vhd sub00/vhpl03 1542642821

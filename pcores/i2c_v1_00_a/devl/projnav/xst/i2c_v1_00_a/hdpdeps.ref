@@ -1,0 +1,30 @@
+V3 21
+FL C:/hlocal/I2C/EDK/pcores/i2c_v1_00_a/hdl/vhdl/i2c.vhd 2014/07/02.14:52:49 P.15xf
+FL C:/hlocal/I2C/EDK/pcores/i2c_v1_00_a/hdl/vhdl/user_logic.vhd 2014/07/03.12:46:57 P.15xf
+FL C:/hlocal/Pr5/pcores/i2c_v1_00_a/hdl/vhdl/i2c.vhd 2017/09/14.16:29:54 P.15xf
+EN i2c_v1_00_a/i2c 1544631586 \
+      FL C:/hlocal/Pr5/pcores/i2c_v1_00_a/hdl/vhdl/i2c.vhd PB ieee/std_logic_1164 1335251622 \
+      PB ieee/std_logic_arith 1335251623 PB ieee/STD_LOGIC_UNSIGNED 1335251625 \
+      LB proc_common_v3_00_a PB proc_common_v3_00_a/proc_common_pkg 1505394634 \
+      PB proc_common_v3_00_a/ipif_pkg 1404305661 \
+      EN proc_common_v3_00_a/soft_reset 1404305654 LB rdpfifo_v4_02_a \
+      EN rdpfifo_v4_02_a/rdpfifo_top 1404305682 LB wrpfifo_v5_01_a \
+      EN wrpfifo_v5_01_a/wrpfifo_top 1404305684 LB plbv46_slave_single_v1_01_a \
+      EN plbv46_slave_single_v1_01_a/plbv46_slave_single 1404305686 \
+      LB i2c_v1_00_a EN i2c_v1_00_a/user_logic 1544631584
+AR i2c_v1_00_a/i2c/IMP 1544631587 \
+      FL C:/hlocal/Pr5/pcores/i2c_v1_00_a/hdl/vhdl/i2c.vhd EN i2c_v1_00_a/i2c 1544631586 \
+      CP plbv46_slave_single_v1_01_a/plbv46_slave_single \
+      CP proc_common_v3_00_a/soft_reset CP rdpfifo_v4_02_a/rdpfifo_top \
+      CP wrpfifo_v5_01_a/wrpfifo_top CP i2c_v1_00_a/user_logic
+FL C:/hlocal/Pr5/pcores/i2c_v1_00_a/hdl/vhdl/user_logic.vhd 2017/09/14.15:10:22 P.15xf
+EN i2c_v1_00_a/user_logic 1544631584 \
+      FL C:/hlocal/Pr5/pcores/i2c_v1_00_a/hdl/vhdl/user_logic.vhd \
+      PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
+      PB ieee/STD_LOGIC_UNSIGNED 1335251625 LB proc_common_v3_00_a \
+      PB proc_common_v3_00_a/proc_common_pkg 1505394634
+AR i2c_v1_00_a/user_logic/IMP 1544631585 \
+      FL C:/hlocal/Pr5/pcores/i2c_v1_00_a/hdl/vhdl/user_logic.vhd \
+      EN i2c_v1_00_a/user_logic 1544631584 CP i2c_master
+FL C:/hlocal/SE/I2C_memoria/EDK/pcores/i2c_v1_00_a/hdl/vhdl/user_logic.vhd 2017/09/14.15:10:21 P.15xf
+FL C:/hlocal/SE/I2C_nbytes/EDK/pcores/i2c_v1_00_a/hdl/vhdl/user_logic.vhd 2017/09/07.12:49:08 P.15xf

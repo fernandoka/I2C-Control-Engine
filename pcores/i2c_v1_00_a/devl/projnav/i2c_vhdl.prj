@@ -1,0 +1,3 @@
+vhdl work "C:\hlocal\Pr5\pcores\i2c_v1_00_a\hdl\vhdl\i2c_master.vhd"
+vhdl i2c_v1_00_a "C:\hlocal\Pr5\pcores\i2c_v1_00_a\hdl\vhdl\user_logic.vhd"
+vhdl i2c_v1_00_a "C:\hlocal\Pr5\pcores\i2c_v1_00_a\hdl\vhdl\i2c.vhd"

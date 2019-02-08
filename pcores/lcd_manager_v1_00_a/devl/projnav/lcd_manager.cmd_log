@@ -1,0 +1,2 @@
+xst -intstyle ise -ifn "D:/Pr5/pcores/lcd_manager_v1_00_a/devl/projnav/lcd_manager.xst" -ofn "D:/Pr5/pcores/lcd_manager_v1_00_a/devl/projnav/lcd_manager.syr" 
+xst -intstyle ise -ifn "D:/Pr5/pcores/lcd_manager_v1_00_a/devl/projnav/lcd_manager.xst" -ofn "D:/Pr5/pcores/lcd_manager_v1_00_a/devl/projnav/lcd_manager.syr" 

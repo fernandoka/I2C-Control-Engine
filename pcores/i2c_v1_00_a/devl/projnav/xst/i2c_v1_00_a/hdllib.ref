@@ -1,0 +1,4 @@
+AR user_logic imp C:/hlocal/Pr5/pcores/i2c_v1_00_a/hdl/vhdl/user_logic.vhd sub00/vhpl01 1544631585
+EN user_logic NULL C:/hlocal/Pr5/pcores/i2c_v1_00_a/hdl/vhdl/user_logic.vhd sub00/vhpl00 1544631584
+EN i2c NULL C:/hlocal/Pr5/pcores/i2c_v1_00_a/hdl/vhdl/i2c.vhd sub00/vhpl02 1544631586
+AR i2c imp C:/hlocal/Pr5/pcores/i2c_v1_00_a/hdl/vhdl/i2c.vhd sub00/vhpl03 1544631587

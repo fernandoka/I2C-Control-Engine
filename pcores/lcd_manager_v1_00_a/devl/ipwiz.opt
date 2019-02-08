@@ -1,0 +1,10 @@
+-batch 
+-create lcd_manager 
+-ver 1.00.a 
+-dir "D:\Pr5" 
+-lang vhdl 
+-bus plbv46 s 
+-wfifo 4 512 
+-xps 
+-ise 
+-driver 

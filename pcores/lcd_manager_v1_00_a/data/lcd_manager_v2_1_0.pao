@@ -1,0 +1,12 @@
+##############################################################################
+## Filename:          D:/Pr5/pcores/lcd_manager_v1_00_a/data/lcd_manager_v2_1_0.pao
+## Description:       Peripheral Analysis Order
+## Date:              Thu Jan 31 11:09:14 2019 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+lib proc_common_v3_00_a  all 
+lib plbv46_slave_single_v1_01_a  all 
+lib wrpfifo_v5_01_a  all 
+lib lcd_manager_v1_00_a user_logic vhdl
+lib lcd_manager_v1_00_a lcd_manager vhdl
+lib lcd_manager_v1_00_a lcd_controller vhdl

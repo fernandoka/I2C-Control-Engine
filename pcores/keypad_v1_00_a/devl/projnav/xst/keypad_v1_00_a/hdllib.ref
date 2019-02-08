@@ -1,0 +1,4 @@
+AR user_logic imp C:/hlocal/Pr5/pcores/keypad_v1_00_a/hdl/vhdl/user_logic.vhd sub00/vhpl01 1549380396
+EN user_logic NULL C:/hlocal/Pr5/pcores/keypad_v1_00_a/hdl/vhdl/user_logic.vhd sub00/vhpl00 1549380395
+EN keypad NULL C:/hlocal/Pr5/pcores/keypad_v1_00_a/hdl/vhdl/keypad.vhd sub00/vhpl02 1549380397
+AR keypad imp C:/hlocal/Pr5/pcores/keypad_v1_00_a/hdl/vhdl/keypad.vhd sub00/vhpl03 1549380398

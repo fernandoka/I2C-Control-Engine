@@ -1,0 +1,25 @@
+V3 11
+FL C:/hlocal/Pr2/pcores/speaker_v1_00_a/hdl/vhdl/speaker.vhd 2018/11/19.16:53:13 P.15xf
+EN speaker_v1_00_a/speaker 1542642820 \
+      FL C:/hlocal/Pr2/pcores/speaker_v1_00_a/hdl/vhdl/speaker.vhd \
+      PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
+      PB ieee/STD_LOGIC_UNSIGNED 1335251625 LB proc_common_v3_00_a \
+      LB plbv46_slave_single_v1_01_a LB speaker_v1_00_a \
+      PB proc_common_v3_00_a/proc_common_pkg 1542642799 \
+      PB proc_common_v3_00_a/ipif_pkg 1542642811 \
+      EN plbv46_slave_single_v1_01_a/plbv46_slave_single 1542642816 \
+      EN speaker_v1_00_a/user_logic 1542642818
+AR speaker_v1_00_a/speaker/IMP 1542642821 \
+      FL C:/hlocal/Pr2/pcores/speaker_v1_00_a/hdl/vhdl/speaker.vhd \
+      EN speaker_v1_00_a/speaker 1542642820 \
+      CP plbv46_slave_single_v1_01_a/plbv46_slave_single \
+      CP speaker_v1_00_a/user_logic
+FL C:/hlocal/Pr2/pcores/speaker_v1_00_a/hdl/vhdl/user_logic.vhd 2018/11/19.16:29:23 P.15xf
+EN speaker_v1_00_a/user_logic 1542642818 \
+      FL C:/hlocal/Pr2/pcores/speaker_v1_00_a/hdl/vhdl/user_logic.vhd \
+      PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
+      PB ieee/STD_LOGIC_UNSIGNED 1335251625 LB proc_common_v3_00_a \
+      PB proc_common_v3_00_a/proc_common_pkg 1542642799
+AR speaker_v1_00_a/user_logic/IMP 1542642819 \
+      FL C:/hlocal/Pr2/pcores/speaker_v1_00_a/hdl/vhdl/user_logic.vhd \
+      EN speaker_v1_00_a/user_logic 1542642818

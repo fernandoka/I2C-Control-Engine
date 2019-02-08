@@ -1,0 +1,24 @@
+V3 12
+FL C:/hlocal/Pr5/pcores/keypad_v1_00_a/hdl/vhdl/keypad.vhd 2018/11/20.17:05:46 P.15xf
+EN keypad_v1_00_a/keypad 1549380397 \
+      FL C:/hlocal/Pr5/pcores/keypad_v1_00_a/hdl/vhdl/keypad.vhd \
+      PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
+      PB ieee/STD_LOGIC_UNSIGNED 1335251625 LB proc_common_v3_00_a \
+      PB proc_common_v3_00_a/proc_common_pkg 1549380374 \
+      PB proc_common_v3_00_a/ipif_pkg 1549380386 LB plbv46_slave_single_v1_01_a \
+      EN plbv46_slave_single_v1_01_a/plbv46_slave_single 1549380393 \
+      LB keypad_v1_00_a EN keypad_v1_00_a/user_logic 1549380395
+AR keypad_v1_00_a/keypad/IMP 1549380398 \
+      FL C:/hlocal/Pr5/pcores/keypad_v1_00_a/hdl/vhdl/keypad.vhd \
+      EN keypad_v1_00_a/keypad 1549380397 \
+      CP plbv46_slave_single_v1_01_a/plbv46_slave_single \
+      CP keypad_v1_00_a/user_logic
+FL C:/hlocal/Pr5/pcores/keypad_v1_00_a/hdl/vhdl/user_logic.vhd 2019/02/05.16:25:33 P.15xf
+EN keypad_v1_00_a/user_logic 1549380395 \
+      FL C:/hlocal/Pr5/pcores/keypad_v1_00_a/hdl/vhdl/user_logic.vhd \
+      PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
+      PB ieee/STD_LOGIC_UNSIGNED 1335251625 LB proc_common_v3_00_a \
+      PB proc_common_v3_00_a/proc_common_pkg 1549380374
+AR keypad_v1_00_a/user_logic/IMP 1549380396 \
+      FL C:/hlocal/Pr5/pcores/keypad_v1_00_a/hdl/vhdl/user_logic.vhd \
+      EN keypad_v1_00_a/user_logic 1549380395 CP teclaDetect

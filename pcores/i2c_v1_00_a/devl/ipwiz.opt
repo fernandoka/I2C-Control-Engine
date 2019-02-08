@@ -1,0 +1,12 @@
+-batch 
+-create i2c 
+-ver 1.00.a 
+-dir "C:\hlocal\I2C\EDK" 
+-lang vhdl 
+-bus plbv46 s 
+-rst 
+-rfifo 1 32 
+-wfifo 1 32 
+-xps 
+-ise 
+-driver 

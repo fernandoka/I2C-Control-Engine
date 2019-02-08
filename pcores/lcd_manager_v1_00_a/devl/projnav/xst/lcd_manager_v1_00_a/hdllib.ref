@@ -1,0 +1,4 @@
+AR user_logic imp //vboxsrv/w7_fpga_uni/Pr5/pcores/lcd_manager_v1_00_a/hdl/vhdl/user_logic.vhd sub00/vhpl01 1548930043
+EN user_logic NULL //vboxsrv/w7_fpga_uni/Pr5/pcores/lcd_manager_v1_00_a/hdl/vhdl/user_logic.vhd sub00/vhpl00 1548930042
+EN lcd_manager NULL //vboxsrv/w7_fpga_uni/Pr5/pcores/lcd_manager_v1_00_a/hdl/vhdl/lcd_manager.vhd sub00/vhpl02 1548930044
+AR lcd_manager imp //vboxsrv/w7_fpga_uni/Pr5/pcores/lcd_manager_v1_00_a/hdl/vhdl/lcd_manager.vhd sub00/vhpl03 1548930045

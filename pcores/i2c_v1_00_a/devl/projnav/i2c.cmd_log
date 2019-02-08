@@ -1,0 +1,6 @@
+xst -intstyle ise -ifn "C:/hlocal/I2C/EDK/pcores/i2c_v1_00_a/devl/projnav/i2c.xst" -ofn "C:/hlocal/I2C/EDK/pcores/i2c_v1_00_a/devl/projnav/i2c.syr" 
+xst -intstyle ise -ifn "C:/hlocal/I2C/EDK/pcores/i2c_v1_00_a/devl/projnav/i2c.xst" -ofn "C:/hlocal/I2C/EDK/pcores/i2c_v1_00_a/devl/projnav/i2c.syr" 
+xst -intstyle ise -ifn "C:/hlocal/I2C/EDK/pcores/i2c_v1_00_a/devl/projnav/i2c.xst" -ofn "C:/hlocal/I2C/EDK/pcores/i2c_v1_00_a/devl/projnav/i2c.syr" 
+xst -intstyle ise -ifn "C:/hlocal/I2C/EDK/pcores/i2c_v1_00_a/devl/projnav/i2c.xst" -ofn "C:/hlocal/I2C/EDK/pcores/i2c_v1_00_a/devl/projnav/i2c.syr" 
+xst -intstyle ise -ifn "C:/hlocal/I2C/EDK/pcores/i2c_v1_00_a/devl/projnav/i2c.xst" -ofn "C:/hlocal/I2C/EDK/pcores/i2c_v1_00_a/devl/projnav/i2c.syr" 
+xst -intstyle ise -ifn "C:/hlocal/Pr5/pcores/i2c_v1_00_a/devl/projnav/i2c.xst" -ofn "C:/hlocal/Pr5/pcores/i2c_v1_00_a/devl/projnav/i2c.syr" 

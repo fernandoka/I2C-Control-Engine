@@ -1,0 +1,25 @@
+V3 13
+FL C:/hlocal/Pr5/pcores/motor_hw_v1_00_a/hdl/vhdl/motor_hw.vhd 2018/11/30.16:21:01 P.15xf
+EN motor_hw_v1_00_a/motor_hw 1544457485 \
+      FL C:/hlocal/Pr5/pcores/motor_hw_v1_00_a/hdl/vhdl/motor_hw.vhd \
+      PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
+      PB ieee/STD_LOGIC_UNSIGNED 1335251625 LB proc_common_v3_00_a \
+      PB proc_common_v3_00_a/proc_common_pkg 1544457460 \
+      PB proc_common_v3_00_a/ipif_pkg 1544457472 LB plbv46_slave_single_v1_01_a \
+      EN plbv46_slave_single_v1_01_a/plbv46_slave_single 1544457481 \
+      LB motor_hw_v1_00_a EN motor_hw_v1_00_a/user_logic 1544457483
+AR motor_hw_v1_00_a/motor_hw/IMP 1544457486 \
+      FL C:/hlocal/Pr5/pcores/motor_hw_v1_00_a/hdl/vhdl/motor_hw.vhd \
+      EN motor_hw_v1_00_a/motor_hw 1544457485 \
+      CP plbv46_slave_single_v1_01_a/plbv46_slave_single \
+      CP motor_hw_v1_00_a/user_logic
+FL C:/hlocal/Pr5/pcores/motor_hw_v1_00_a/hdl/vhdl/user_logic.vhd 2018/12/10.16:57:20 P.15xf
+EN motor_hw_v1_00_a/user_logic 1544457483 \
+      FL C:/hlocal/Pr5/pcores/motor_hw_v1_00_a/hdl/vhdl/user_logic.vhd \
+      PB ieee/std_logic_1164 1335251622 PB ieee/std_logic_arith 1335251623 \
+      PB ieee/STD_LOGIC_UNSIGNED 1335251625 LB proc_common_v3_00_a \
+      PB proc_common_v3_00_a/proc_common_pkg 1544457460
+AR motor_hw_v1_00_a/user_logic/IMP 1544457484 \
+      FL C:/hlocal/Pr5/pcores/motor_hw_v1_00_a/hdl/vhdl/user_logic.vhd \
+      EN motor_hw_v1_00_a/user_logic 1544457483 CP motorstep \
+      CP one_hundred_K_counter

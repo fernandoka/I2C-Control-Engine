@@ -1,0 +1,704 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.37 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.37 secs
+ 
+--> Reading design: user_logic.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "user_logic.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "user_logic"
+Output Format                      : NGC
+Target Device                      : xc3s1000-4-ft256
+
+---- Source Options
+Top Module Name                    : user_logic
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 8
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "C:/Xilinx/14.7/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/proc_common_pkg.vhd" in Library proc_common_v3_00_a.
+Architecture proc_common_pkg of Entity proc_common_pkg is up to date.
+Compiling vhdl file "C:/hlocal/SE/I2C_memoria/EDK/pcores/i2c_v1_00_a/hdl/vhdl/i2c_master.vhd" in Library work.
+WARNING:HDLParsers:817 - "C:/hlocal/SE/I2C_memoria/EDK/pcores/i2c_v1_00_a/hdl/vhdl/i2c_master.vhd" Line 82. Choice .TO. is not a locally static expression.
+WARNING:HDLParsers:817 - "C:/hlocal/SE/I2C_memoria/EDK/pcores/i2c_v1_00_a/hdl/vhdl/i2c_master.vhd" Line 85. Choice .TO. is not a locally static expression.
+WARNING:HDLParsers:817 - "C:/hlocal/SE/I2C_memoria/EDK/pcores/i2c_v1_00_a/hdl/vhdl/i2c_master.vhd" Line 88. Choice .TO. is not a locally static expression.
+Architecture logic of Entity i2c_master is up to date.
+Compiling vhdl file "C:/hlocal/SE/I2C_memoria/EDK/pcores/i2c_v1_00_a/hdl/vhdl/user_logic.vhd" in Library i2c_v1_00_a.
+Entity <user_logic> compiled.
+Entity <user_logic> (Architecture <imp>) compiled.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <user_logic> in library <i2c_v1_00_a> (architecture <imp>) with generics.
+	C_NUM_REG = 1
+	C_SLV_DWIDTH = 32
+	bus_clk = 100000
+	input_clk = 50000000
+
+Analyzing hierarchy for entity <i2c_master> in library <work> (architecture <logic>) with generics.
+	bus_clk = 100000
+	input_clk = 50000000
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing generic Entity <user_logic> in library <i2c_v1_00_a> (Architecture <imp>).
+	C_NUM_REG = 1
+	C_SLV_DWIDTH = 32
+	bus_clk = 100000
+	input_clk = 50000000
+WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
+WARNING:Xst:37 - Detected unknown constraint/property "SIGIS". This constraint/property is not supported by the current software release and will be ignored.
+INFO:Xst:1739 - HDL ADVISOR - "C:/hlocal/SE/I2C_memoria/EDK/pcores/i2c_v1_00_a/hdl/vhdl/user_logic.vhd" line 41: declaration of a buffer port will make it difficult for you to validate this design by simulation. It is preferable to declare it as output.
+WARNING:Xst:819 - "C:/hlocal/SE/I2C_memoria/EDK/pcores/i2c_v1_00_a/hdl/vhdl/user_logic.vhd" line 352: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <cuenta_bytes>, <nbyte>, <comando_val>, <Num_bytes>, <dato_val>
+INFO:Xst:1561 - "C:/hlocal/SE/I2C_memoria/EDK/pcores/i2c_v1_00_a/hdl/vhdl/user_logic.vhd" line 511: Mux is complete : default of case is discarded
+Entity <user_logic> analyzed. Unit <user_logic> generated.
+
+Analyzing generic Entity <i2c_master> in library <work> (Architecture <logic>).
+	bus_clk = 100000
+	input_clk = 50000000
+Entity <i2c_master> analyzed. Unit <i2c_master> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <i2c_master>.
+    Related source file is "C:/hlocal/SE/I2C_memoria/EDK/pcores/i2c_v1_00_a/hdl/vhdl/i2c_master.vhd".
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 9                                              |
+    | Transitions        | 18                                             |
+    | Inputs             | 4                                              |
+    | Outputs            | 10                                             |
+    | Clock              | data_clk                  (rising_edge)        |
+    | Reset              | reset                     (positive)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | ready                                          |
+    | Power Up State     | ready                                          |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 1-bit register for signal <busy>.
+    Found 1-bit register for signal <ack_error>.
+    Found 8-bit register for signal <data_rd>.
+    Found 8-bit register for signal <addr_rw>.
+    Found 3-bit register for signal <bit_cnt>.
+    Found 3-bit subtractor for signal <bit_cnt$addsub0000>.
+    Found 9-bit register for signal <count>.
+    Found 9-bit adder for signal <count$addsub0000> created at line 79.
+    Found 1-bit register for signal <data_clk>.
+    Found 9-bit comparator greatequal for signal <data_clk$cmp_ge0000>.
+    Found 9-bit comparator lessequal for signal <data_clk$cmp_le0000>.
+    Found 8-bit register for signal <data_rx>.
+    Found 8-bit register for signal <data_tx>.
+    Found 1-bit register for signal <Mtridata_scl_clk> created at line 83.
+    Found 1-bit register for signal <Mtrien_scl_clk> created at line 83.
+    Found 9-bit comparator lessequal for signal <Mtrien_scl_clk$cmp_le0000>.
+    Found 1-bit tristate buffer for signal <scl_clk>.
+    Found 1-bit register for signal <scl_ena>.
+    Found 1-bit register for signal <sda_int>.
+    Found 1-bit register for signal <stretch>.
+    Found 9-bit comparator greatequal for signal <stretch$cmp_ge0000>.
+    Found 9-bit comparator lessequal for signal <stretch$cmp_le0000>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred  52 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred   5 Comparator(s).
+	inferred   1 Tristate(s).
+Unit <i2c_master> synthesized.
+
+
+Synthesizing Unit <user_logic>.
+    Related source file is "C:/hlocal/SE/I2C_memoria/EDK/pcores/i2c_v1_00_a/hdl/vhdl/user_logic.vhd".
+WARNING:Xst:647 - Input <Bus2IP_Data> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <Bus2IP_RdCE<0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <WFIFO2IP_AlmostEmpty> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <Bus2IP_WrCE<0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <RFIFO2IP_AlmostFull> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <RFIFO2IP_Full> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <Bus2IP_BE> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:646 - Signal <i2c_ack_error> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <fifo_cntl_ns> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <fifo_cntl_cs> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <WFIFO2IP_Command_REG<0:7>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <WFIFO2IP_Command_REG<16:23>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found finite state machine <FSM_1> for signal <EstadoActualControlI2C>.
+    -----------------------------------------------------------------------
+    | States             | 8                                              |
+    | Transitions        | 24                                             |
+    | Inputs             | 8                                              |
+    | Outputs            | 9                                              |
+    | Clock              | Bus2IP_Clk                (rising_edge)        |
+    | Reset              | Bus2IP_Reset              (positive)           |
+    | Reset type         | synchronous                                    |
+    | Reset State        | estadoesperacomando                            |
+    | Power Up State     | estadoesperacomando                            |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found finite state machine <FSM_2> for signal <EstadoActualLecturaFifo>.
+    -----------------------------------------------------------------------
+    | States             | 5                                              |
+    | Transitions        | 11                                             |
+    | Inputs             | 4                                              |
+    | Outputs            | 5                                              |
+    | Clock              | Bus2IP_Clk                (rising_edge)        |
+    | Reset              | Bus2IP_Reset              (positive)           |
+    | Reset type         | synchronous                                    |
+    | Reset State        | estadoesperaorden                              |
+    | Power Up State     | estadoesperaorden                              |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 1-bit register for signal <IP2RFIFO_WrReq>.
+    Found 1-bit register for signal <IP2WFIFO_RdReq>.
+    Found 1-bit register for signal <busy_prev>.
+    Found 8-bit register for signal <cuenta_bytes>.
+    Found 8-bit subtractor for signal <cuenta_bytes$addsub0000>.
+    Found 32-bit register for signal <i2c_data_rd_32_le>.
+    Found 1-bit 4-to-1 multiplexer for signal <i2c_data_rd_32_le_10$mux0000> created at line 506.
+    Found 1-bit 4-to-1 multiplexer for signal <i2c_data_rd_32_le_11$mux0000> created at line 506.
+    Found 1-bit 4-to-1 multiplexer for signal <i2c_data_rd_32_le_12$mux0000> created at line 506.
+    Found 1-bit 4-to-1 multiplexer for signal <i2c_data_rd_32_le_13$mux0000> created at line 506.
+    Found 1-bit 4-to-1 multiplexer for signal <i2c_data_rd_32_le_14$mux0000> created at line 506.
+    Found 1-bit 4-to-1 multiplexer for signal <i2c_data_rd_32_le_15$mux0000> created at line 506.
+    Found 1-bit 4-to-1 multiplexer for signal <i2c_data_rd_32_le_16$mux0000> created at line 506.
+    Found 1-bit 4-to-1 multiplexer for signal <i2c_data_rd_32_le_17$mux0000> created at line 506.
+    Found 1-bit 4-to-1 multiplexer for signal <i2c_data_rd_32_le_18$mux0000> created at line 506.
+    Found 1-bit 4-to-1 multiplexer for signal <i2c_data_rd_32_le_19$mux0000> created at line 506.
+    Found 1-bit 4-to-1 multiplexer for signal <i2c_data_rd_32_le_20$mux0000> created at line 506.
+    Found 1-bit 4-to-1 multiplexer for signal <i2c_data_rd_32_le_21$mux0000> created at line 506.
+    Found 1-bit 4-to-1 multiplexer for signal <i2c_data_rd_32_le_22$mux0000> created at line 506.
+    Found 1-bit 4-to-1 multiplexer for signal <i2c_data_rd_32_le_23$mux0000> created at line 506.
+    Found 1-bit 4-to-1 multiplexer for signal <i2c_data_rd_32_le_24$mux0000> created at line 506.
+    Found 1-bit 4-to-1 multiplexer for signal <i2c_data_rd_32_le_25$mux0000> created at line 506.
+    Found 1-bit 4-to-1 multiplexer for signal <i2c_data_rd_32_le_26$mux0000> created at line 506.
+    Found 1-bit 4-to-1 multiplexer for signal <i2c_data_rd_32_le_27$mux0000> created at line 506.
+    Found 1-bit 4-to-1 multiplexer for signal <i2c_data_rd_32_le_28$mux0000> created at line 506.
+    Found 1-bit 4-to-1 multiplexer for signal <i2c_data_rd_32_le_29$mux0000> created at line 506.
+    Found 1-bit 4-to-1 multiplexer for signal <i2c_data_rd_32_le_30$mux0000> created at line 506.
+    Found 1-bit 4-to-1 multiplexer for signal <i2c_data_rd_32_le_31$mux0000> created at line 506.
+    Found 1-bit 4-to-1 multiplexer for signal <i2c_data_rd_32_le_8$mux0000> created at line 506.
+    Found 1-bit 4-to-1 multiplexer for signal <i2c_data_rd_32_le_9$mux0000> created at line 506.
+    Found 8-bit 4-to-1 multiplexer for signal <i2c_data_wr_le>.
+    Found 2-bit register for signal <nbyte>.
+    Found 2-bit adder for signal <nbyte_next$addsub0000> created at line 396.
+    Found 32-bit register for signal <WFIFO2IP_Command_REG>.
+    Found 32-bit register for signal <WFIFO2IP_Data_REG>.
+    Summary:
+	inferred   2 Finite State Machine(s).
+	inferred 109 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred  32 Multiplexer(s).
+Unit <user_logic> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 4
+ 2-bit adder                                           : 1
+ 3-bit subtractor                                      : 1
+ 8-bit subtractor                                      : 1
+ 9-bit adder                                           : 1
+# Registers                                            : 60
+ 1-bit register                                        : 51
+ 2-bit register                                        : 1
+ 3-bit register                                        : 1
+ 32-bit register                                       : 2
+ 8-bit register                                        : 4
+ 9-bit register                                        : 1
+# Comparators                                          : 5
+ 9-bit comparator greatequal                           : 2
+ 9-bit comparator lessequal                            : 3
+# Multiplexers                                         : 25
+ 1-bit 4-to-1 multiplexer                              : 24
+ 8-bit 4-to-1 multiplexer                              : 1
+# Tristates                                            : 1
+ 1-bit tristate buffer                                 : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_2> for best encoding.
+Optimizing FSM <EstadoActualLecturaFifo/FSM> on signal <EstadoActualLecturaFifo[1:3]> with gray encoding.
+-----------------------------------------
+ State                       | Encoding
+-----------------------------------------
+ estadoesperaorden           | 000
+ estadoarrancalecturadato    | 001
+ estadoarrancalecturacomando | 011
+ estadoesperalecturadato     | 010
+ estadoesperalecturacomando  | 110
+-----------------------------------------
+Analyzing FSM <FSM_1> for best encoding.
+Optimizing FSM <EstadoActualControlI2C/FSM> on signal <EstadoActualControlI2C[1:8]> with one-hot encoding.
+-------------------------------------
+ State                   | Encoding
+-------------------------------------
+ estadoesperacomando     | 00000001
+ estadolecturaoescritura | 00000010
+ estadolectura1          | 00000100
+ estadolectura2          | 01000000
+ espero_datos            | 00001000
+ estadoescritura1        | 00010000
+ estadoescritura2        | 00100000
+ estadoescriturafifo     | 10000000
+-------------------------------------
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <i2c_master_i/state/FSM> on signal <state[1:9]> with one-hot encoding.
+-----------------------
+ State    | Encoding
+-----------------------
+ ready    | 000000001
+ start    | 000000010
+ command  | 000000100
+ slv_ack1 | 000001000
+ wr       | 000010000
+ rd       | 000100000
+ slv_ack2 | 001000000
+ mstr_ack | 010000000
+ stop     | 100000000
+-----------------------
+WARNING:Xst:1710 - FF/Latch <Mtridata_scl_clk> (without init value) has a constant value of 0 in block <i2c_master_i>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_23> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_22> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_21> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_20> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_19> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_18> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_17> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_16> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_7> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_6> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_5> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_4> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_3> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_2> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_1> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_0> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_23> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_22> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_21> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_20> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_19> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_18> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_17> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_16> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_7> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_6> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_5> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_4> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_3> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_2> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_1> of sequential type is unconnected in block <user_logic>.
+WARNING:Xst:2677 - Node <WFIFO2IP_Command_REG_0> of sequential type is unconnected in block <user_logic>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 3
+# Adders/Subtractors                                   : 4
+ 2-bit adder                                           : 1
+ 3-bit subtractor                                      : 1
+ 8-bit subtractor                                      : 1
+ 9-bit adder                                           : 1
+# Registers                                            : 145
+ Flip-Flops                                            : 145
+# Comparators                                          : 5
+ 9-bit comparator greatequal                           : 2
+ 9-bit comparator lessequal                            : 3
+# Multiplexers                                         : 25
+ 1-bit 4-to-1 multiplexer                              : 24
+ 8-bit 4-to-1 multiplexer                              : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1710 - FF/Latch <Mtridata_scl_clk> (without init value) has a constant value of 0 in block <i2c_master>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <i2c_master_i/ack_error> of sequential type is unconnected in block <user_logic>.
+
+Optimizing unit <user_logic> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block user_logic, actual ratio is 1.
+FlipFlop i2c_master_i/bit_cnt_0 has been replicated 1 time(s)
+FlipFlop i2c_master_i/bit_cnt_1 has been replicated 1 time(s)
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 165
+ Flip-Flops                                            : 165
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : user_logic.ngr
+Top Level Output File Name         : user_logic
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 153
+
+Cell Usage :
+# BELS                             : 277
+#      GND                         : 1
+#      INV                         : 3
+#      LUT2                        : 20
+#      LUT2_D                      : 2
+#      LUT2_L                      : 1
+#      LUT3                        : 58
+#      LUT3_D                      : 2
+#      LUT3_L                      : 1
+#      LUT4                        : 140
+#      LUT4_D                      : 9
+#      LUT4_L                      : 12
+#      MUXF5                       : 28
+# FlipFlops/Latches                : 165
+#      FDC                         : 18
+#      FDCE                        : 9
+#      FDE                         : 18
+#      FDE_1                       : 8
+#      FDP                         : 8
+#      FDR                         : 13
+#      FDRE                        : 80
+#      FDRS                        : 10
+#      FDS                         : 1
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 111
+#      IBUF                        : 38
+#      OBUF                        : 72
+#      OBUFT                       : 1
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s1000ft256-4 
+
+ Number of Slices:                      155  out of   7680     2%  
+ Number of Slice Flip Flops:            165  out of  15360     1%  
+ Number of 4 input LUTs:                248  out of  15360     1%  
+ Number of IOs:                         153
+ Number of bonded IOBs:                 112  out of    173    64%  
+ Number of GCLKs:                         2  out of      8    25%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+Bus2IP_Clk                         | BUFGP                  | 116   |
+i2c_master_i/data_clk1             | BUFG                   | 49    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+Bus2IP_Reset                       | IBUF                   | 35    |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 9.757ns (Maximum Frequency: 102.486MHz)
+   Minimum input arrival time before clock: 6.227ns
+   Maximum output required time after clock: 9.242ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'Bus2IP_Clk'
+  Clock period: 9.552ns (frequency: 104.690MHz)
+  Total number of paths / destination ports: 1070 / 149
+-------------------------------------------------------------------------
+Delay:               9.552ns (Levels of Logic = 6)
+  Source:            i2c_master_i/count_2 (FF)
+  Destination:       i2c_master_i/stretch (FF)
+  Source Clock:      Bus2IP_Clk rising
+  Destination Clock: Bus2IP_Clk rising
+
+  Data Path: i2c_master_i/count_2 to i2c_master_i/stretch
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              7   0.720   1.405  i2c_master_i/count_2 (i2c_master_i/count_2)
+     LUT3:I0->O            4   0.551   0.985  i2c_master_i/count_cmp_eq000012 (i2c_master_i/count_cmp_eq000012)
+     LUT3:I2->O            1   0.551   0.000  i2c_master_i/count_mux0000<6>1_F (N461)
+     MUXF5:I0->O           3   0.360   0.975  i2c_master_i/count_mux0000<6>1 (i2c_master_i/count_mux0000<6>)
+     LUT4_D:I2->O          1   0.551   1.140  i2c_master_i/data_clk_mux000121 (N42)
+     LUT3:I0->O            1   0.551   0.000  i2c_master_i/stretch_and000079_G (N101)
+     MUXF5:I1->O           1   0.360   0.801  i2c_master_i/stretch_and000079 (i2c_master_i/stretch_and0000)
+     FDCE:CE                   0.602          i2c_master_i/stretch
+    ----------------------------------------
+    Total                      9.552ns (4.246ns logic, 5.306ns route)
+                                       (44.5% logic, 55.5% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'i2c_master_i/data_clk1'
+  Clock period: 9.757ns (frequency: 102.486MHz)
+  Total number of paths / destination ports: 489 / 57
+-------------------------------------------------------------------------
+Delay:               4.879ns (Levels of Logic = 2)
+  Source:            i2c_master_i/bit_cnt_0 (FF)
+  Destination:       i2c_master_i/data_rx_6 (FF)
+  Source Clock:      i2c_master_i/data_clk1 rising
+  Destination Clock: i2c_master_i/data_clk1 falling
+
+  Data Path: i2c_master_i/bit_cnt_0 to i2c_master_i/data_rx_6
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDP:C->Q             26   0.720   1.845  i2c_master_i/bit_cnt_0 (i2c_master_i/bit_cnt_0)
+     LUT4:I3->O            1   0.551   0.000  i2c_master_i/data_rx_6_and00001_G (N59)
+     MUXF5:I1->O           1   0.360   0.801  i2c_master_i/data_rx_6_and00001 (i2c_master_i/data_rx_6_and0000)
+     FDE_1:CE                  0.602          i2c_master_i/data_rx_6
+    ----------------------------------------
+    Total                      4.879ns (2.233ns logic, 2.646ns route)
+                                       (45.8% logic, 54.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'Bus2IP_Clk'
+  Total number of paths / destination ports: 216 / 214
+-------------------------------------------------------------------------
+Offset:              6.227ns (Levels of Logic = 3)
+  Source:            WFIFO2IP_RdAck (PAD)
+  Destination:       EstadoActualControlI2C_FSM_FFd4 (FF)
+  Destination Clock: Bus2IP_Clk rising
+
+  Data Path: WFIFO2IP_RdAck to EstadoActualControlI2C_FSM_FFd4
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             7   0.821   1.405  WFIFO2IP_RdAck_IBUF (WFIFO2IP_RdAck_IBUF)
+     LUT4:I0->O            2   0.551   1.072  EstadoActualControlI2C_FSM_FFd4-In11 (N40)
+     LUT4:I1->O            1   0.551   0.801  EstadoActualControlI2C_FSM_FFd4-In10 (EstadoActualControlI2C_FSM_FFd4-In10)
+     FDRS:S                    1.026          EstadoActualControlI2C_FSM_FFd4
+    ----------------------------------------
+    Total                      6.227ns (2.949ns logic, 3.278ns route)
+                                       (47.4% logic, 52.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'i2c_master_i/data_clk1'
+  Total number of paths / destination ports: 32 / 32
+-------------------------------------------------------------------------
+Offset:              5.992ns (Levels of Logic = 3)
+  Source:            Bus2IP_Reset (PAD)
+  Destination:       i2c_master_i/data_rx_7 (FF)
+  Destination Clock: i2c_master_i/data_clk1 falling
+
+  Data Path: Bus2IP_Reset to i2c_master_i/data_rx_7
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O           148   0.821   2.857  Bus2IP_Reset_IBUF (Bus2IP_Reset_IBUF)
+     LUT4:I0->O            1   0.551   0.000  i2c_master_i/data_rx_6_and00001_G (N59)
+     MUXF5:I1->O           1   0.360   0.801  i2c_master_i/data_rx_6_and00001 (i2c_master_i/data_rx_6_and0000)
+     FDE_1:CE                  0.602          i2c_master_i/data_rx_6
+    ----------------------------------------
+    Total                      5.992ns (2.334ns logic, 3.658ns route)
+                                       (39.0% logic, 61.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'i2c_master_i/data_clk1'
+  Total number of paths / destination ports: 4 / 2
+-------------------------------------------------------------------------
+Offset:              9.242ns (Levels of Logic = 2)
+  Source:            i2c_master_i/state_FSM_FFd8 (FF)
+  Destination:       sda_T (PAD)
+  Source Clock:      i2c_master_i/data_clk1 rising
+
+  Data Path: i2c_master_i/state_FSM_FFd8 to sda_T
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q             14   0.720   1.526  i2c_master_i/state_FSM_FFd8 (i2c_master_i/state_FSM_FFd8)
+     LUT4:I0->O            1   0.551   0.801  i2c_master_i/sda_ena_n1 (sda_T_OBUF)
+     OBUF:I->O                 5.644          sda_T_OBUF (sda_T)
+    ----------------------------------------
+    Total                      9.242ns (6.915ns logic, 2.327ns route)
+                                       (74.8% logic, 25.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'Bus2IP_Clk'
+  Total number of paths / destination ports: 36 / 36
+-------------------------------------------------------------------------
+Offset:              8.619ns (Levels of Logic = 2)
+  Source:            i2c_master_i/data_clk (FF)
+  Destination:       sda_T (PAD)
+  Source Clock:      Bus2IP_Clk rising
+
+  Data Path: i2c_master_i/data_clk to sda_T
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              2   0.720   0.903  i2c_master_i/data_clk (i2c_master_i/data_clk1)
+     LUT4:I3->O            1   0.551   0.801  i2c_master_i/sda_ena_n1 (sda_T_OBUF)
+     OBUF:I->O                 5.644          sda_T_OBUF (sda_T)
+    ----------------------------------------
+    Total                      8.619ns (6.915ns logic, 1.704ns route)
+                                       (80.2% logic, 19.8% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 30.00 secs
+Total CPU time to Xst completion: 30.39 secs
+ 
+--> 
+
+Total memory usage is 411496 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   53 (   0 filtered)
+Number of infos    :    3 (   0 filtered)
+
